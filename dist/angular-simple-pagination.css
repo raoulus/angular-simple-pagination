@@ -1,0 +1,19 @@
+.simple-pagination p {
+  display: inline-block;
+  line-height: 24px;
+  margin: 0 10px 0 0;
+}
+
+.simple-pagination__button {
+  background: #fff;
+  border: 1px solid #f1f1f1;
+  padding: 0px 6px;
+}
+
+.simple-pagination__page-limit__option:after {
+  content: ' | ';
+}
+
+.simple-pagination__page-limit .active {
+  font-weight: bold;
+}

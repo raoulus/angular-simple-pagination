@@ -1,0 +1,12 @@
+{
+  "preset": "google",
+  "esnext": true,
+  "maximumLineLength": {
+    "value": 200,
+    "allExcept": ["comments", "regex"]
+  },
+  "excludeFiles": [
+    "node_modules/**",
+    "docs/**"
+  ]
+}
