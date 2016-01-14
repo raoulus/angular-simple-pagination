@@ -1,0 +1,17 @@
+{
+  "esnext": true,
+  "globalstrict": true,
+  "node": true,
+  "browser": true,
+  "quotmark": "single",
+  "unused": true,
+  "predef": [
+     "describe",
+     "it",
+     "expect",
+     "beforeEach",
+     "afterEach",
+     "angular",
+     "inject"
+   ]
+}
