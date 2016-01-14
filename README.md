@@ -1,8 +1,9 @@
 # Angular Simple Pagination
 
 ---
+[![GitHub build](https://travis-ci.org/raoulus/angular-simple-pagination.svg?branch=github)]()
 [![GitHub tag](https://img.shields.io/github/tag/raoulus/angular-simple-pagination.svg)]()
-[![GitHub tag](https://img.shields.io/github/license/raoulus/angular-simple-pagination.svg)]()
+[![GitHub license](https://img.shields.io/github/license/raoulus/angular-simple-pagination.svg)]()
 
 ## About
 Simple pagination directive for AngularJS. It's tested against angular 1.4.8.
