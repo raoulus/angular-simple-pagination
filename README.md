@@ -29,6 +29,7 @@ angular.module('YOUR_MODULE').controller(function($scope) {
   };
 
   $scope.items = [...];
+  $scope.callback = function() { ... };
 });
 ```
 
@@ -38,6 +39,7 @@ HTML:
   offset="settings.offset"
   page-limit="settings.pageLimit"
   page-limits="settings.pageLimits"
+  on-update="callback()"
   total="items.length">
 </simple-pagination>
 

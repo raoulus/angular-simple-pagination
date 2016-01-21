@@ -9,7 +9,8 @@ function SimplePagination() {
       offset: '=',
       pageLimit: '=',
       pageLimits: '=',
-      total: '='
+      total: '=',
+      onUpdate: '&'
     },
     bindToController: true,
     controller: SimplePaginationController,
@@ -27,16 +28,19 @@ function SimplePaginationController() {
     self.pageLimit = max >= self.total ? self.total : max;
     self.currentPage = 0;
     self.offset = 0;
+    invokeCallback();
   };
 
   self.nextPage = function () {
     self.currentPage += 1;
     self.offset = self.currentPage * self.pageLimit;
+    invokeCallback();
   };
 
   self.previousPage = function () {
     self.currentPage -= 1;
     self.offset = self.currentPage * self.pageLimit;
+    invokeCallback();
   };
 
   self.getTotalPages = function () {
@@ -46,4 +50,10 @@ function SimplePaginationController() {
   self.isCurrentPageLimit = function (value) {
     return self.pageLimit == value;
   };
+
+  function invokeCallback() {
+    if (self.onUpdate) {
+      self.onUpdate();
+    }
+  }
 }

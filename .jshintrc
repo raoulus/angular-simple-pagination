@@ -12,6 +12,7 @@
      "beforeEach",
      "afterEach",
      "angular",
-     "inject"
+     "inject",
+     "sinon"
    ]
 }

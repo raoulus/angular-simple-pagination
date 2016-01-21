@@ -1,4 +1,4 @@
-/*jslint nomen: true */
+/*jslint nomen: true, expr: true */
 'use strict';
 
 describe('Angular Simple Pagination', function() {
@@ -17,7 +17,8 @@ describe('Angular Simple Pagination', function() {
       $rootScope.pageLimit = 10;
       $rootScope.total = 2000;
       $rootScope.pageLimits = [10, 100, 1000];
-      element = $compile('<simple-pagination page-limit="pageLimit" offset="offset" total="total"></simple-pagination>')($rootScope);
+      $rootScope.callback = sinon.spy();
+      element = $compile('<simple-pagination page-limit="pageLimit" offset="offset" total="total" on-update="callback()"></simple-pagination>')($rootScope);
       $rootScope.$digest();
       controller = element.controller('simplePagination');
     });
@@ -54,6 +55,21 @@ describe('Angular Simple Pagination', function() {
     $rootScope.$digest();
     expect(controller.currentPage).to.equal(9);
     expect($rootScope.offset).to.equal(controller.currentPage * controller.pageLimit);
+  });
+
+  it('Invokes the callback when pagination changes', function() {
+    controller.previousPage();
+    expect($rootScope.callback.called).to.be.true;
+
+    $rootScope.callback.reset();
+    expect($rootScope.callback.called).to.be.false;
+    controller.nextPage();
+    expect($rootScope.callback.called).to.be.true;
+
+    $rootScope.callback.reset();
+    expect($rootScope.callback.called).to.be.false;
+    controller.setItemsPerPages(10);
+    expect($rootScope.callback.called).to.be.true;
   });
 
   it('Returns the amount of pages for the current page limit', function() {
