@@ -14,11 +14,12 @@ describe('Angular Simple Pagination', function() {
       var $compile = _$compile_;
       $rootScope = _$rootScope_;
       $rootScope.offset = 0;
+      $rootScope.currentPage = 0;
       $rootScope.pageLimit = 10;
       $rootScope.total = 2000;
       $rootScope.pageLimits = [10, 100, 1000];
       $rootScope.callback = sinon.spy();
-      element = $compile('<simple-pagination page-limit="pageLimit" offset="offset" total="total" on-update="callback()"></simple-pagination>')($rootScope);
+      element = $compile('<simple-pagination page-limit="pageLimit" offset="offset" total="total" on-update="callback()" current-page="currentPage"></simple-pagination>')($rootScope);
       $rootScope.$digest();
       controller = element.controller('simplePagination');
     });
@@ -29,7 +30,7 @@ describe('Angular Simple Pagination', function() {
     controller.offset = 10;
     controller.setItemsPerPages(25);
     $rootScope.$digest();
-    expect(controller.currentPage).to.equal(0);
+    expect($rootScope.currentPage).to.equal(0);
     expect($rootScope.offset).to.equal(0);
     expect($rootScope.pageLimit).to.equal(25);
   });
@@ -45,7 +46,7 @@ describe('Angular Simple Pagination', function() {
     expect(controller.currentPage).to.equal(0);
     controller.nextPage();
     $rootScope.$digest();
-    expect(controller.currentPage).to.equal(1);
+    expect($rootScope.currentPage).to.equal(1);
     expect($rootScope.offset).to.equal(controller.currentPage * controller.pageLimit);
   });
 
@@ -53,7 +54,7 @@ describe('Angular Simple Pagination', function() {
     controller.currentPage = 10;
     controller.previousPage();
     $rootScope.$digest();
-    expect(controller.currentPage).to.equal(9);
+    expect($rootScope.currentPage).to.equal(9);
     expect($rootScope.offset).to.equal(controller.currentPage * controller.pageLimit);
   });
 
