@@ -23,6 +23,7 @@ Controller:
 ```javascript
 angular.module('YOUR_MODULE').controller(function($scope) {
   $scope.settings = {
+    currentPage: 0,
     offset: 0,
     pageLimit: 5,
     pageLimits: ['10', '50', '100']
@@ -36,6 +37,7 @@ angular.module('YOUR_MODULE').controller(function($scope) {
 HTML:
 ```html
 <simple-pagination
+  current-page="settings.currentPage"
   offset="settings.offset"
   page-limit="settings.pageLimit"
   page-limits="settings.pageLimits"

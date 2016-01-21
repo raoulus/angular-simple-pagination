@@ -6,6 +6,7 @@ function SimplePagination() {
   return {
     restrict: 'E',
     scope: {
+      currentPage: '=',
       offset: '=',
       pageLimit: '=',
       pageLimits: '=',
@@ -22,7 +23,8 @@ function SimplePagination() {
 function SimplePaginationController() {
   var self = this;
 
-  self.currentPage = 0;
+  self.currentPage = self.currentPage || 0;
+  self.pageLimit = self.pageLimit || self.pageLimits[0];
 
   self.setItemsPerPages = function (max) {
     self.pageLimit = max >= self.total ? self.total : max;
