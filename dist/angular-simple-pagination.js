@@ -20,7 +20,7 @@ function SimplePagination() {
   };
 }
 
-function SimplePaginationController() {
+function SimplePaginationController($scope) {
   var self = this;
 
   self.currentPage = self.currentPage || 0;
@@ -58,4 +58,12 @@ function SimplePaginationController() {
       self.onUpdate();
     }
   }
+
+  $scope.$watch(function () {
+    return self.total;
+  }, function (newTotal) {
+    if (newTotal && self.pageLimit > newTotal) {
+      self.pageLimit = newTotal;
+    }
+  });
 }
